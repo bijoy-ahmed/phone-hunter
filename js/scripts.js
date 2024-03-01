@@ -42,8 +42,8 @@ console.log(phone);
      <div class="card-body">
        <h2 class="card-title">${phone.phone_name}</h2>
        <p>If a dog chews shoes whose shoes does he choose?</p>
-       <div class="card-actions justify-end">
-         <button class="btn btn-primary">Buy Now</button>
+       <div class="card-actions justify-center">
+         <button class="btn btn-primary onclick="handleShowDetail('${phone.slug}')" id="">Show details</button>
        </div>
      </div>
      `
@@ -53,8 +53,17 @@ console.log(phone);
 
 //  hide loading  spinner
 toggleSpinner(false);
-
 }
+
+const handleShowDetail = async(id) =>{
+console.log('clicked', id);
+// load single data
+const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+const data = await res.json();
+console.log(data);
+}
+
+
 
 // handle search 
 const handleSearch = (isShowAll) =>{
